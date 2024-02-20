@@ -1,0 +1,41 @@
+.actionButtons {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-size: 14px;
+}
+
+.actionButtons button:first-child {
+  padding: 10px 25px;
+  border: none;
+  background-color: blue;
+  color: white;
+  cursor: pointer;
+  border-radius: 20px;
+  /* width: 120px; */
+  transition: 0.5s ease-in-out;
+}
+
+.actionButtons button:nth-child(2) {
+  padding: 10px 20px;
+  /* width: 120px; */
+  border: none;
+  background-color: red;
+  color: white;
+  cursor: pointer;
+  border-radius: 20px;
+  transition: 0.5s ease-in-out;
+}
+
+.actionButtons button:first-child:hover {
+  transform: scale(1.09);
+}
+
+.actionButtons button:nth-child(2):hover {
+  transform: scale(1.09);
+}
+
+.actionButtons button:nth-child(2):disabled {
+  cursor: not-allowed;
+  background-color: rgba(220, 20, 60, 0.473);
+}
