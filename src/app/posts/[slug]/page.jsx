@@ -38,7 +38,7 @@ const SinglePage = async ({ params }) => {
                   />
                 </div>
               )}
-              <ActionButtons slug={slug} />
+              <ActionButtons slug={slug} postOwner={data?.user?.email} />
             </div>
 
             <div className={styles.userTextContainer}>

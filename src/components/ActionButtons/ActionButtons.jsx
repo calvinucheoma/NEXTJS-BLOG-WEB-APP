@@ -2,10 +2,13 @@
 import { useState } from 'react';
 import styles from './ActionButtons.module.css';
 import { useRouter } from 'next/navigation';
+import { useSession } from 'next-auth/react';
 
-const ActionButtons = ({ slug }) => {
+const ActionButtons = ({ slug, postOwner }) => {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
+
+  const { data } = useSession();
 
   // console.log(slug);
 
@@ -32,12 +35,18 @@ const ActionButtons = ({ slug }) => {
     router.push(`/edit/${slug}`); // Navigate to the write page with slug as parameter for editing
   };
   return (
-    <div className={styles.actionButtons}>
-      <button onClick={handleEdit}>Edit</button>
-      <button onClick={handleDelete} disabled={loading}>
-        {loading ? 'Deleting...' : 'Delete'}
-      </button>
-    </div>
+    <>
+      {postOwner === data?.user?.email ? (
+        <div className={styles.actionButtons}>
+          <button onClick={handleEdit}>Edit</button>
+          <button onClick={handleDelete} disabled={loading}>
+            {loading ? 'Deleting...' : 'Delete'}
+          </button>
+        </div>
+      ) : (
+        ''
+      )}
+    </>
   );
 };
 
