@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import styles from './EditPage.module.css';
-import ReactQuill from 'react-quill'; //gives us an error when trying to build the project due to server side rendering of Nextjs so we have to import it dynamically
+//import ReactQuill from 'react-quill'; //gives us an error when trying to build the project due to server side rendering of Nextjs so we have to import it dynamically
 import 'react-quill/dist/quill.bubble.css';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
@@ -14,12 +14,12 @@ import {
   getDownloadURL,
 } from 'firebase/storage';
 import { app } from '@/utils/firebase';
-// import dynamic from 'next/dynamic';
+import dynamic from 'next/dynamic';
 
 const EditPage = ({ params }) => {
   const { slug } = params;
 
-  // const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
+  const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
 
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState('');
